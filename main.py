@@ -1,15 +1,7 @@
 import requests
 
 
-# 1. replace можно дёргать заранее, разделение через ',' останется:
-# logins = input("Enter a comma-separated logins: ").replace(" ", "").split(',')
-#
-# 2. Ты не обрабатываешь невалидные логины и отсутствие ввода.
-#
-# 3. Либу requests пропишу в requirements.txt. Чтобы подтянуть либы оттуда,
-#    нужно будет дёрнуть pip. Но это уже будут не твои проблемы:
 #    pip install -r requirements.txt
-#
 
 def cfreq(argument):
     return requests.get(f"https://codeforces.com/api/{argument}").json()
