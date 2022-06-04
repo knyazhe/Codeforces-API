@@ -9,6 +9,7 @@ def cfreq(argument):
 
 logins = input("Logins: ").replace(" ", "").split(',')
 for login in logins:
+    tasks = {}
     response = cfreq(f"user.status?handle={login}")
     print(login, end=" : ")
     if response['status'] != "OK":
@@ -16,6 +17,7 @@ for login in logins:
     else:
         count = 0
         for i in response['result']:
-            if i['verdict'] == "OK":
+            if str(i['problem']["contestId"])+i['problem']["index"] not in tasks:
                 count += 1
+                tasks[str(i['problem']["contestId"])+i['problem']["index"]] = 1
         print(count)
